@@ -1,8 +1,11 @@
 package br.com.eventoesportivo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(schema="DBFUT", name="APLICACAO")
@@ -12,9 +15,12 @@ public class Aplicacao {
 	private Long idAplicacao;
 
 	@Column(name = "DESC_APLICACAO")
-	private string descAplicacao;
+	private String descAplicacao;
 
-	@Column(name = "DT_APLICACAO")
-	private LocalDateTime dataAplicacao;
+	@Column(name = "DT_CRIACAO_APLICACAO")
+	private LocalDateTime dataCriacaoAplicacao;
+	
+	@Column(name = "DT_EXCLUSAO_APLICACAO")
+	private LocalDateTime dataExclusaoAplicacao;
 	
 }
