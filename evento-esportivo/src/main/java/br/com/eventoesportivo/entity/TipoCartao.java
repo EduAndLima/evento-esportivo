@@ -1,5 +1,6 @@
 package br.com.eventoesportivo.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -7,10 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(schema="DBFUT", name="TIPO_CARTAO")
-public class TipoCartao {
+public class TipoCartao implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "ID_TIPO_CARTAO")
 	private Long idTipoCartao;
@@ -23,4 +30,9 @@ public class TipoCartao {
 	
 	@Column(name = "DT_EXCLUSAO_TIPO_CARTAO")
 	private LocalDateTime dataExclusaoTipoCartao;
+	
+	public boolean naoExcluido()
+	{
+		return dataExclusaoTipoCartao.toString().isEmpty();
+	}
 }

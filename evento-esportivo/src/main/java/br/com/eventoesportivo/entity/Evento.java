@@ -1,5 +1,6 @@
 package br.com.eventoesportivo.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -10,10 +11,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(schema="DBFUT", name="EVENTO")
-public class Evento {
+public class Evento implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "ID_EVENTO")
 	private Long idEvento;
@@ -33,4 +40,5 @@ public class Evento {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_TIPO_EVENTO")
 	private TipoEvento tipoEvento;
+	
 }

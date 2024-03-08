@@ -1,5 +1,6 @@
 package br.com.eventoesportivo.entity;
 
+import java.io.Serializable;
 import java.sql.Blob;
 import java.time.LocalDateTime;
 
@@ -8,10 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(schema="DBFUT", name="EQUIPE")
-public class Equipe {
+public class Equipe implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "ID_EQUIPE")
 	private Long idEquipe;
@@ -30,4 +37,9 @@ public class Equipe {
 	
 	@Column(name = "FOTO_EQUIPE")
 	private Blob fotoEquipe;
+	
+	public boolean naoExcluido()
+	{
+	return dataExclusaoEquipe.toString().isEmpty();
+	}
 }

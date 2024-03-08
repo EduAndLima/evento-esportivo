@@ -1,5 +1,7 @@
 package br.com.eventoesportivo.entity;
 
+import java.io.Serializable;
+import static java.util.Objects.nonNull;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -7,10 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(schema="DBFUT", name="USUARIO")
-public class Usuario {
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "ID_USUARIO")
 	private Long idUsuario;
@@ -29,4 +37,9 @@ public class Usuario {
 	
 	@Column(name = "SENHA_USUARIO")
 	private String senhaUsuario;
+	
+	public boolean excluido()
+	{
+		return nonNull(dataExclusaoUsuario);
+	}
 }
