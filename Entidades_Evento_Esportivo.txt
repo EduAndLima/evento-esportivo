@@ -1,0 +1,315 @@
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="EVENTO_EQUIPE")
+public class EventoEquipe (
+    @Id
+	@Column(name = "ID_EVENTO_EQUIPE")
+	private Long idEventoEquipe;
+	
+  `ID_EVENTO` INT(11) NOT NULL,
+  `ID_EQUIPE` INT(11) NOT NULL,
+  `DT_VINCULO` DATE NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="GOL_JOGO_ATLETA")
+public class GolJogoAtleta (
+    @Id
+	@Column(name = "ID_GOL_JOGO_ATLETA")
+	private Long idGolJogoAtleta;
+	
+  `ID_ATLETA` INT(11) NOT NULL,
+  `ID_JOGO` INT(11) NOT NULL,
+  `ID_SUMULA` INT(11) NOT NULL,
+  `QTD_GOL` INT(11) NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="INSCRICAO")
+public class Inscricao (
+    @Id
+	@Column(name = "ID_INSCRICAO")
+	private Long idInscricao;
+	
+  `ID_EVENTO` INT(11) NOT NULL,
+  `ID_ATLETA` INT(11) NOT NULL,
+  `DT_INSCRICAO` DATE NOT NULL,
+  `VALOR_PAGO_INSCRICAO` DOUBLE DEFAULT NULL,
+  `DT_EXCLUSAO_INSCRICAO` DATE DEFAULT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="JOGO")
+public class Jogo (
+    @Id
+	@Column(name = "ID_JOGO")
+	private Long idJogo;
+	
+  `ID_EQUIPE_1` INT(11) NOT NULL,
+  `ID_EQUIPE_2` INT(11) NOT NULL,
+  `PLACAR_EQUIPE_1` INT(11) DEFAULT NULL,
+  `PLACAR_EQUIPE_2` INT(11) DEFAULT NULL,
+  `DT_JOGO` DATE NOT NULL,
+  `HR_JOGO` TIME NOT NULL,
+  `ID_EVENTO_EQUIPE` INT(11) NOT NULL
+  `DT_INCLUSAO_JOGO` DATE NOT NULL,
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="ORGANIZADOR")
+public class Organizador (
+    @Id
+	@Column(name = "ID_ORGANIZADOR")
+	private Long idOrganizador;
+	
+  `NOME_ORGANIZADOR` VARCHAR(60) NOT NULL,
+  `ID_TIPO_ORGANIZADOR` INT(11) NOT NULL,
+  `DT_INCLUSAO_ORGANIZADOR` DATE NOT NULL,
+  `DT_EXCLUSAO_ORGANIZADO` DATE DEFAULT NULL,
+  `EMAIL_ORGANIZADOR` VARCHAR(100) DEFAULT NULL,
+  `TELEFONE_ORGANIZADOR` VARCHAR(30) DEFAULT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="ORGANIZADOR_JOGO")
+public class OrganizadorJogo (
+    @Id
+	@Column(name = "ID_ORGANIZADOR_JOGO")
+	private Long idOrganizadorJogo;
+	
+  `ID_ORGANIZADOR` INT(11) NOT NULL,
+  `ID_JOGO` INT(11) NOT NULL,
+  `DT_INCLUSAO_ORGANIZADOR_JOGO` DATE NOT NULL,
+  `DT_EXCLUSAO_ORGANIZADOR_JOGO` DATE DEFAULT NULL,
+  `ID_SUMULA` INT(11) NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="PERFIL")
+public class Perfil (
+    @Id
+	@Column(name = "ID_PERFIL")
+	private Long idPerfil;
+	
+  `NOME_PERFIL` VARCHAR(50) NOT NULL,
+  `DT_CRIACAO_PERFIL` DATETIME NOT NULL,
+  `DT_EXCLUSAO_PERFIL` DATETIME NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="PERFIL_USUARIO")
+public class PerfilUsuario (
+    @Id
+	@Column(name = "ID_USUARIO")
+	private Long idUsuario;
+    `ID_PERFIL` INT(11) NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+
+@Table(schema="DBFUT", name="PERMISSAO")
+public class Permissao (
+    @Id
+	@Column(name = "ID_PERMISSAO")
+	private Long idPermissao;
+	
+  `ID_APLICACAO` INT(11) NOT NULL,
+  `ID_PERFIL` INT(11) NOT NULL
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="SUMULA")
+public class Sumula(
+    @Id
+	@Column(name = "ID_SUMULA")
+	private Long idSumula;
+	
+  `ID_JOGO` INT(11) NOT NULL,
+  `ID_ORGANIZADOR` INT(11) NOT NULL,
+  `ID_EVENTO_EQUIPE` INT(11) NOT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="TIPO_CARTAO")
+public class TipoCartao (
+    @Id
+	@Column(name = "ID_TIPO_CARTAO")
+	private Long idTipoCartao;
+	
+  `DESC_TIPO_CARTAO` VARCHAR(50) NOT NULL,
+  `DT_INCLUSAO_TIPO_CARTAO` DATE NOT NULL,
+  `DT_EXCLUSAO_TIPO_CARTAO` DATE DEFAULT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="TIPO_EVENTO")
+public class TipoEvento (
+    @Id
+	@Column(name = "ID_TIPO_EVENTO")
+	private Long idTipoEvento;
+	
+  `DESC_TIPO_EVENTO` VARCHAR(50) NOT NULL,
+  `DT_CRIACAO_TIPO_EVENTO` DATETIME NOT NULL,
+  `DT_EXCLUSAO_TIPO_EVENTO` DATETIME DEFAULT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="TIPO_ORGANIZADOR")
+public class TipoOrganizador (
+    @Id
+	@Column(name = "ID_TIPO_ORGANIZADOR")
+	private Long idTipoOrganizador;
+	
+  `DESC_TIPO_ORGANIZADOR` VARCHAR(50) NOT NULL,
+  `DT_INCLUSAO_TIPO_ORGANIZADOR` DATE NOT NULL,
+  `DT_EXCLUSAO_TIPO_ORGANIZADOR` DATE DEFAULT NULL
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="TIPO_VINCULO")
+public class TipoVinculo {
+    @Id
+	@Column(name = "ID_TIPO_VINCULO")
+	private Long idTipoVinculo;
+	/*
+  `DESC_TIPO_VINCULO` VARCHAR(50) NOT NULL,
+  `DT_INCLUSAO_TIPO_VINCULO` DATE NOT NULL,
+  `DT_EXCLUSAO_TIPO_VINCULO` DATE DEFAULT NULL*/
+  }
+
+
+package br.com.eventoesportivo.entity;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema="DBFUT", name="USUARIO")
+public class Usuario {
+    @Id
+	@Column(name = "ID_USUARIO")
+	private Long idUsuario;
+	/*
+  `NOME_USUARIO` VARCHAR(100) NOT NULL,
+  `DT_CRIACAO_USUARIO` DATETIME NOT NULL,
+  `DT_EXCLUSAO_USUARIO` DATETIME DEFAULT NULL,
+  `EMAIL_USUARIO` VARCHAR(100) NOT NULL,
+  `SENHA_USUARIO` VARCHAR(32) NOT NULL*/
+  }
+
+

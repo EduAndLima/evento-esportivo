@@ -1,6 +1,10 @@
 package br.com.eventoesportivo.entity;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -12,7 +16,7 @@ public class Aplicacao {
 	private Long idAplicacao;
 
 	@Column(name = "DESC_APLICACAO")
-	private string descAplicacao;
+	private String descAplicacao;
 
 	@Column(name = "DT_APLICACAO")
 	private LocalDateTime dataAplicacao;
