@@ -4,7 +4,10 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -27,5 +30,7 @@ public class Evento {
 	@Column(name = "NOME_RESP_EVENTO")
 	private String nomeResponsavelEvento;
 	
-	//mapear tipo_evento
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_TIPO_EVENTO")
+	private TipoEvento tipoEvento;
 }

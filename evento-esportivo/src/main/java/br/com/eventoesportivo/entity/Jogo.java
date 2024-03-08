@@ -6,7 +6,10 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -17,8 +20,13 @@ public class Jogo {
 	@Column(name = "ID_JOGO")
 	private Long idJogo;
 
-	//mapear equipe 1
-	//mapear equipe 2
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_EQUIPE")
+	private Equipe equipe1;	
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_EQUIPE")
+	private Equipe equipe2;
 	
 	@Column(name = "PLACAR_EQUIPE_1")
 	private LocalDate placarEquipe1;
@@ -36,4 +44,8 @@ public class Jogo {
 	private LocalDateTime dataInclusaoJogo;
 	
 	// mapear evento_equipe
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_EVENTO_EQUIPE")
+	private EventoEquipe eventoEquipe;
 }

@@ -6,7 +6,10 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -35,13 +38,20 @@ public class Atleta {
 	@Column(name = "TELEFONE_ATLETA")
 	private String telefoneAtleta;
 	
-	// mapear tipo vinculo
-	//mapear posição
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_TIPO_VINCULO")
+	private TipoVinculo tipoVinculo;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_POSICAO")
+	private Posicao posicao;
 	
 	@Column(name = "DOCUMENTO_ATLETA")
 	private String documentoAtleta;
 	
-	//mapear tipo_documento
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_TIPO_DOCUMENTO")
+	private TipoDocumento tipoDocumento;
 	
 	@Column(name = "FOTO_ATLETA")
 	private Blob fotoAtleta;
