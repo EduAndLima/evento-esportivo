@@ -1,31 +1,12 @@
 package br.com.eventoesportivo.entity;
 
-<<<<<<< HEAD
-=======
+
+
 import java.io.Serializable;
->>>>>>> origin/main
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-<<<<<<< HEAD
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(schema="DBFUT", name="EVENTO_EQUIPE")
-public class EventoEquipe {
-    @Id
-	@Column(name = "ID_EVENTO_EQUIPE")
-	private Long idEventoEquipe;
-	/*
-  `ID_EVENTO` INT(11) NOT NULL,
-  `ID_EQUIPE` INT(11) NOT NULL,*/
-    @Column(name = "DT_VINCULO")
-	private LocalDateTime dataVinculoEventoEquipe;
-}
-
-=======
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -58,4 +39,4 @@ public class EventoEquipe implements Serializable {
 	private LocalDateTime dataVinculoEventoEquipe;
 
 }
->>>>>>> origin/main
+

@@ -6,16 +6,18 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.eventoesportivo.controller.dto.IncluirAplicacaoRequest;
+import br.com.eventoesportivo.controller.dto.IncluirAplicacaoResponse;
 import br.com.eventoesportivo.entity.Aplicacao;
 import br.com.eventoesportivo.service.AplicacaoService;
 
@@ -41,30 +43,25 @@ public class AplicacaoController {
     }
 
     @PostMapping()
-    public ResponseEntity<IncluirAplicacaoResponse> incluir(@RequestParam String aplicacaoData, @RequestParam("file") final MultipartFile file) throws IOException {
+    public ResponseEntity<IncluirAplicacaoResponse> incluir(@RequestParam String aplicacaoData) throws IOException {
 
         final var incluirAplicacaoRequest = mapper.readValue(aplicacaoData, IncluirAplicacaoRequest.class);
-        incluirAplicacaoRequest.setFoto(file.getInputStream().readAllBytes());
-
+        
         var aplicacao = aplicacaoService.incluir(incluirAplicacaoRequest);
 
         var aplicacaoResponse = new IncluirAplicacaoResponse();
         BeanUtils.copyProperties(aplicacao, aplicacaoResponse);
         return new ResponseEntity<>(aplicacaoResponse, HttpStatus.CREATED);
     }
-
+/*
     @PutMapping()
-    public ResponseEntity<Aplicacao> atualizar(@RequestParam String clienteData, @RequestParam(value = "file", required = false) final MultipartFile file ) throws IOException {
-        final var atualizarClienteRequest = mapper.readValue(clienteData, AtualizarClienteRequest.class);
-
-        if (file != null){
-            atualizarAplicacaoRequest.setFoto(file.getInputStream().readAllBytes());
-        }
+    public ResponseEntity<Aplicacao> atualizar(@RequestParam String aplicacaoData) throws IOException {
+        final var atualizarAplicacaoRequest = mapper.readValue(aplicacaoData, AtualizarAplicacaoRequest.class);
 
         var aplicacao = aplicacaoService.atualizar(atualizarAplicacaoRequest);
         return new ResponseEntity<>(aplicacao, HttpStatus.OK);
     }
-
+*/
     @DeleteMapping("{id}")
     public ResponseEntity<?> deletar(@PathVariable("id") Long id) {
         aplicacaoService.deletar(id);

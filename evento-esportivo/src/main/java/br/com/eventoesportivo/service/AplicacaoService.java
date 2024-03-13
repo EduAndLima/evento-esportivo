@@ -1,12 +1,11 @@
 package br.com.eventoesportivo.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.eventoesportivo.controller.dto.AtualizarAplicacaoRequest;
 import br.com.eventoesportivo.controller.dto.IncluirAplicacaoRequest;
 import br.com.eventoesportivo.entity.Aplicacao;
 import br.com.eventoesportivo.exception.AplicacaoNaoEncontradaException;
@@ -14,8 +13,9 @@ import br.com.eventoesportivo.repository.AplicacaoRepository;
 
 @Service
 public class AplicacaoService {
-
-    private final AplicacaoRepository aplicacaoRepository;
+    
+	@Autowired
+    AplicacaoRepository aplicacaoRepository;
 
     public AplicacaoService(AplicacaoRepository aplicacaoRepository) {
         this.aplicacaoRepository = aplicacaoRepository;
@@ -34,19 +34,18 @@ public class AplicacaoService {
         
         var aplicacao = new Aplicacao();
         BeanUtils.copyProperties(aplicacaoRequest, aplicacao);
-        aplicacao.setDataCriacaoAplicacao(LocalDateTime.now());        
         aplicacaoRepository.save(aplicacao);
 
         return aplicacao;
     }
-
+    /*
     public Aplicacao atualizar(AtualizarAplicacaoRequest atualizarAplicacaoRequest) {
         var aplicacao = aplicacaoRepository.findById(atualizarAplicacaoRequest.getId()).get();
 
         BeanUtils.copyProperties(atualizarAplicacaoRequest, aplicacao);
-        aplicacaoRepository.save(aplicacao);
+        aplicacaoRepository.saveAndFlush(aplicacao);
         return aplicacao;
-    }
+    }*/
 
     public void deletar(Long id) {
     	aplicacaoRepository.deleteById(id);

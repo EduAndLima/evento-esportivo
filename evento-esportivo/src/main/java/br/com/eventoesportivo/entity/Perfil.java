@@ -1,29 +1,15 @@
 package br.com.eventoesportivo.entity;
 
-<<<<<<< HEAD
-=======
+
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
->>>>>>> origin/main
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
-@Entity
-@Table(schema="DBFUT", name="PERFIL")
-public class Perfil {
-    @Id
-	@Column(name = "ID_PERFIL")
-	private Long idPerfil;
-	/*
-  `NOME_PERFIL` VARCHAR(50) NOT NULL,
-  `DT_CRIACAO_PERFIL` DATETIME NOT NULL,
-  `DT_EXCLUSAO_PERFIL` DATETIME NOT NULL*/
-}
-=======
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,4 +38,4 @@ public class Perfil implements Serializable {
 	return dataExclusaoPerfil.toString().isEmpty();
 	}
 }
->>>>>>> origin/main
+

@@ -1,9 +1,7 @@
 package br.com.eventoesportivo.entity;
 
-<<<<<<< HEAD
-=======
 import java.io.Serializable;
->>>>>>> origin/main
+
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -35,5 +33,10 @@ public class Aplicacao implements Serializable {
 	
 	@Column(name = "DT_EXCLUSAO_APLICACAO")
 	private LocalDateTime dataExclusaoAplicacao;
+
+	public Aplicacao() {
+		this.dataCriacaoAplicacao = LocalDateTime.now();
+	}
+	
 	
 }

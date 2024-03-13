@@ -1,19 +1,6 @@
 package br.com.eventoesportivo.entity;
 
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(schema="DBFUT", name="PERFIL_USUARIO")
-public class PerfilUsuario {
-    @Id
-	@Column(name = "ID_USUARIO")
-	private Long idUsuario;
-   // `ID_PERFIL` INT(11) NOT NULL
-=======
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -40,5 +27,5 @@ public class PerfilUsuario implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_PERFIL")
 	private Perfil perfil;
->>>>>>> origin/main
+
 }

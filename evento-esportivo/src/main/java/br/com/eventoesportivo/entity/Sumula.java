@@ -1,24 +1,6 @@
 package br.com.eventoesportivo.entity;
 
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(schema="DBFUT", name="SUMULA")
-public class Sumula{
-    @Id
-	@Column(name = "ID_SUMULA")
-	private Long idSumula;
-	/*
-  `ID_JOGO` INT(11) NOT NULL,
-  `ID_ORGANIZADOR` INT(11) NOT NULL,
-  `ID_EVENTO_EQUIPE` INT(11) NOT NULL*/
-}
-
-=======
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -56,4 +38,4 @@ public class Sumula implements Serializable {
 	@JoinColumn(name = "ID_EVENTO_EQUIPE")
 	private EventoEquipe eventoEquipe;
 }
->>>>>>> origin/main
+
